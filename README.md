@@ -58,3 +58,7 @@ Play is endless. Only 49 terrain rows near the frog are kept in memory, and dist
 ## Traffic difficulty
 
 Each Play run gets a new random seed. Lanes use deterministic values derived from that seed so rendering and collision detection agree: randomized directions, lane speeds, offsets, and 1–3 vehicles. The first 12 rows use two cars per road; speed and the chance of three-car lanes rise over the first 100 rows and then level off. Cars in each lane share a speed, preventing overtaking/overlap, and randomized spacing retains a safe gap. Explore remains frozen. Each vehicle has two forward headlights, glowing at night. Rear lights were removed for visual simplicity.
+
+## GitHub Pages
+
+The Pages workflow builds on pushes to main and publishes out/. In repository Settings > Pages, select GitHub Actions. Expected URL: https://Jemp72.github.io/Emman-personal-portfolio/ . The workflow sets NEXT_PUBLIC_BASE_PATH=/Emman-personal-portfolio; omit this for local development or root-domain hosting. Configure Sanity project/dataset as repository variables and its read token as a secret when connecting the CMS. CMS changes require a new workflow run.
