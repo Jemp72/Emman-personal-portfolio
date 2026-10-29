@@ -1,9 +1,10 @@
+import { sitePath } from "@/content/path";
 import assets from "./assets.json";
 import type { Portfolio } from "./types";
 const images = (prefix: string) =>
   Object.entries(assets)
     .filter(([name]) => name.startsWith(prefix))
-    .map(([, url]) => url);
+    .map(([, url]) => sitePath(url));
 // Verified against the supplied CV and ProjectDescriptions.md. AGAP = DARS, confirmed by owner.
 export const localContent: Portfolio = {
   name: "Jose Emmanuel G. Pedroso",
@@ -13,7 +14,7 @@ export const localContent: Portfolio = {
   bio: "I’m a BS Information Technology student majoring in Information Security at the University of Southeastern Philippines. My work brings together web development, digital illustration, and graphic design. As a Public Information Officer for the Society of Information Technology Students’ local council, I create publication materials and help turn information into clear, considered visuals.",
   email: "pedrosoemman72@gmail.com",
   location: "Tagum City, Philippines",
-  resume: "/resume.pdf",
+  resume: sitePath("/resume.pdf"),
   education: "BS Information Technology · Information Security · USeP",
   skills: [
     {
@@ -93,6 +94,6 @@ export const localContent: Portfolio = {
     .map(([name, image]) => ({
       title: name.replace(/\.[^.]+$/, "").replace(/_/g, " "),
       category: image.includes("artworks") ? "Illustration" : "Graphic design",
-      image,
+      image: sitePath(image),
     })),
 };

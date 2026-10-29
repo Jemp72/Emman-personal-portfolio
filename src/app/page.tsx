@@ -1,3 +1,4 @@
+import { sitePath } from "@/content/path";
 import { getContent } from "@/content/load";
 import Experience from "@/components/Experience";
 export default async function Home() {
@@ -105,7 +106,7 @@ export default async function Home() {
             {c.projects.map((p, i) => (
               <a
                 className="project-card"
-                href={`/projects/${p.slug}/`}
+                href={sitePath(`/projects/${p.slug}/`)}
                 key={p.slug}
               >
                 <div className="project-image">
@@ -177,7 +178,7 @@ export default async function Home() {
             I’d love to hear about it. Let’s bring a little creativity to your
             next idea.
           </p>
-          <a className="dark-button" href="/contact/">
+          <a className="dark-button" href={sitePath("/contact/")}>
             Say hello ↗
           </a>
           <a className="email" href={`mailto:${c.email}`}>

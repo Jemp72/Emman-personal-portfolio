@@ -1,4 +1,6 @@
 "use client";
+import { sitePath } from "@/content/path";
+
 import { useEffect, useRef, useState } from "react";
 import ThemeToggle from "./ThemeToggle";
 import type { SceneController } from "@/three/scene";
@@ -191,7 +193,7 @@ export default function Experience() {
   return (
     <>
       <header className="site-header" inert={playing}>
-        <a className="brand" href="/#home" aria-label="Emman home">
+        <a className="brand" href={sitePath("/#home")} aria-label="Emman home">
           <span className="frog-mark">••</span> Emman
           <span className="brand-dot">.</span>
         </a>
@@ -199,7 +201,7 @@ export default function Experience() {
           {["about", "skills", "projects", "contact"].map((id) => (
             <a
               key={id}
-              href={id === "contact" ? "/contact/" : `/#${id}`}
+              href={sitePath(id === "contact" ? "/contact/" : `/#${id}`)}
               aria-current={active === id ? "location" : undefined}
             >
               {id}

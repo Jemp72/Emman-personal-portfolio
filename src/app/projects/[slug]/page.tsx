@@ -1,3 +1,4 @@
+import { sitePath } from "@/content/path";
 import { getContent } from "@/content/load";
 import { notFound } from "next/navigation";
 export async function generateStaticParams() {
@@ -26,7 +27,7 @@ export default async function Project({
   if (!p) notFound();
   return (
     <main id="portfolio" className="detail">
-      <a className="text-link" href="/#projects">
+      <a className="text-link" href={sitePath("/#projects")}>
         ← Back to selected work
       </a>
       <span className="eyebrow">PROJECT NOTES / WEB DEVELOPMENT</span>
@@ -72,7 +73,7 @@ export default async function Project({
           />
         ))}
       </div>
-      <a className="text-link" href="/#projects">
+      <a className="text-link" href={sitePath("/#projects")}>
         ← More projects
       </a>
     </main>

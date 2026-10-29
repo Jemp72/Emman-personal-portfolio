@@ -1,3 +1,4 @@
+import { sitePath } from "@/content/path";
 import { getContent } from "@/content/load";
 import ContactForm from "@/components/ContactForm";
 export const metadata = {
@@ -9,7 +10,7 @@ export default async function Contact() {
   const c = await getContent();
   return (
     <main className="detail contact-page" id="portfolio">
-      <a className="text-link" href="/">
+      <a className="text-link" href={sitePath("/")}>
         ← Back to the woodland
       </a>
       <div className="contact-layout">
