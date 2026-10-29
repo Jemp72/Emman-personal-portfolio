@@ -1,0 +1,11 @@
+node_modules/
+.next/
+out/
+.env*
+!.env.example
+*.tsbuildinfo
+test-results/
+studio/dist/
+
+studio/.sanity/
+content-source/contact-sheet.jpg
