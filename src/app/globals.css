@@ -1201,10 +1201,10 @@ html[data-mode="explore"] .hero h1 {
     display: none;
   }
 }
-/* Desktop Explore reserves 70% for content and 30% for the woodland. */
+/* Desktop Explore reserves 60% for content and 40% for the woodland. */
 @media (min-width: 641px) {
   html[data-mode="explore"] .portfolio {
-    width: 60%;
+    width: 50%;
     max-width: none;
     margin-left: 5%;
     margin-right: 0;
@@ -1213,21 +1213,21 @@ html[data-mode="explore"] .hero h1 {
     max-width: 64ch;
   }
   .world:not(.world-playing) .scene-host {
-    left: 70%;
+    left: 60%;
   }
   .world:not(.world-playing)::after {
     background:
       linear-gradient(
         90deg,
         var(--paper) 0%,
-        var(--paper) 70%,
-        color-mix(in srgb, var(--paper) 65%, transparent) 73%,
-        transparent 80%
+        var(--paper) 60%,
+        color-mix(in srgb, var(--paper) 65%, transparent) 63%,
+        transparent 70%
       ),
       linear-gradient(0deg, var(--paper), transparent 17%);
   }
   .world:not(.world-playing) .world-caption {
-    left: 73%;
+    left: 63%;
     right: 3%;
     flex-direction: column;
     align-items: flex-start;
@@ -1235,9 +1235,9 @@ html[data-mode="explore"] .hero h1 {
   }
   .world:not(.world-playing) .world-label {
     right: 3%;
-    max-width: 24%;
+    max-width: 34%;
   }
   .world:not(.world-playing) .scene-message {
-    left: 70%;
+    left: 60%;
   }
 }
