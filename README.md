@@ -73,3 +73,7 @@ Nunito is the primary typeface for body text, navigation, headings, and form con
 
 - Nunito: Vernon Adams, Cyreal, Jacques Le Bailly — https://fonts.google.com/specimen/Nunito
 - Lora: Cyreal — https://fonts.google.com/specimen/Lora
+
+## Certifications
+
+Certifications are managed in Sanity's Certification document type. The public section presents text metadata and an external file link. Local development without a configured CMS links to the MCITS PDF hosted in Sanity. The certificate file is not committed to the public GitHub repository. The original supplied PDF is preserved. The optional one-time studio/add-mcits-certificate.ts import preserves an existing record and its edits.

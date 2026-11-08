@@ -1135,3 +1135,65 @@ html[data-mode="explore"] .hero h1 {
     height: 40px;
   }
 }
+.certification-list {
+  margin-top: 35px;
+}
+.certification {
+  display: grid;
+  grid-template-columns: 35px minmax(0, 1fr);
+  gap: 18px;
+  padding: 30px 0;
+  border-top: 1px solid var(--line);
+}
+.certification:last-child {
+  border-bottom: 1px solid var(--line);
+}
+.certification-number {
+  font:
+    italic 22px var(--font-lora),
+    Georgia,
+    serif;
+  color: var(--muted);
+  padding-top: 3px;
+}
+.certification-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  font-size: 10px;
+  letter-spacing: 0.7px;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+.certification-meta > span {
+  text-transform: uppercase;
+}
+.certification h3 {
+  font-size: 22px;
+  line-height: 1.35;
+}
+.certification-issuer {
+  font-size: 13px;
+  margin-top: 8px;
+}
+.certification-description {
+  font-size: 13px;
+  margin-top: 14px;
+  max-width: 460px;
+}
+.certification .text-link {
+  margin-top: 15px;
+}
+.certification-empty {
+  margin-top: 25px;
+}
+@media (max-width: 640px) {
+  .certification {
+    grid-template-columns: 25px minmax(0, 1fr);
+    gap: 12px;
+  }
+  .certification h3 {
+    font-size: 21px;
+  }
+}
+@media(min-width:641px) and (max-width:900px){.site-header nav a[href*="certifications"]{display:none;}}

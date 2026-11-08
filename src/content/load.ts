@@ -8,7 +8,7 @@ export const getContent = cache(async (): Promise<Portfolio> => {
   if (!/^[a-z0-9-]+$/.test(id)) throw new Error("Invalid SANITY_PROJECT_ID");
   const dataset = process.env.SANITY_DATASET || "production";
   if (!/^[a-z0-9_-]+$/.test(dataset)) throw new Error("Invalid dataset");
-  const query = `{"settings": *[_type == "settings"][0]{name,headline,intro,bio,email,location,education,studioUrl,"resume":resume.asset->url}, "skills":*[_type=="skillGroup"]|order(order asc){category,items},"projects":*[_type=="project"]|order(order asc){"slug":slug.current,title,summary,body,technologies,"images":images[].asset->url,source,demo},"gallery":*[_type=="artwork"]|order(order asc){title,category,alt,description,"image":image.asset->url}}`;
+  const query = `{"certifications":*[_type=="certification"]|order(order asc,issuedOn desc){"id":_id,title,issuer,issuedOn,description,credentialType,"url":coalesce(certificate.asset->url,credentialUrl)},"settings": *[_type == "settings"][0]{name,headline,intro,bio,email,location,education,studioUrl,"resume":resume.asset->url}, "skills":*[_type=="skillGroup"]|order(order asc){category,items},"projects":*[_type=="project"]|order(order asc){"slug":slug.current,title,summary,body,technologies,"images":images[].asset->url,source,demo},"gallery":*[_type=="artwork"]|order(order asc){title,category,alt,description,"image":image.asset->url}}`;
   const res = await fetch(
     `https://${id}.api.sanity.io/v2025-02-19/data/query/${dataset}?perspective=published&query=${encodeURIComponent(query)}`,
     {
@@ -31,6 +31,9 @@ export const getContent = cache(async (): Promise<Portfolio> => {
     throw new Error("Duplicate project slugs");
   return {
     ...result.settings,
+    certifications: (result.certifications || []).filter(
+      (c: { url?: string }) => c.url && /^https?:\/\//.test(c.url),
+    ),
     skills: result.skills,
     projects: result.projects.map((p: Portfolio["projects"][number]) => ({
       ...p,

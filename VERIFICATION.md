@@ -47,3 +47,7 @@ Six rule tests pass, including same-seed reproducibility, different-seed variati
 ## Connected Sanity workflow — 8 November 2026
 
 Imported owner-approved profile, résumé, three skill groups, three projects, and twelve creative outputs into Sanity project 8cs195in. The hosted editor and schemas deployed successfully. Authenticated CLI tests passed create, draft isolation, publish, edit, order, and delete with temporary records cleaned up. A static export using real CMS content passed, including all project pages and the admin entry page. Public data reads use the published perspective. Automatic change checks are scheduled every 15 minutes; GitHub timing is not guaranteed.
+
+## Certifications — 8 November 2026
+
+Added a text-first certifications section, navigation/Explore landmark, and editable Sanity Certification documents. Seeded the owner-supplied MCITS 2026 two-page PDF into Sanity. Static export and lint passed. Chrome checks passed at 320, 390, 768, and 1440 pixels with no horizontal overflow; certificate metadata, external link, and PDF response verified. Light/dark layouts inspected. The hosted Studio schema deployed successfully. Certification IDs/revisions participate in automatic content-change checks. The PDF is stored in Sanity, not the GitHub repository.

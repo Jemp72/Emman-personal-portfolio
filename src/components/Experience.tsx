@@ -59,11 +59,18 @@ export default function Experience() {
     function update() {
       controller.current?.scroll(scrollDestination(scrollY));
       controller.current?.landmarks(
-        ["home", "about", "skills", "projects", "gallery", "contact"].map(
-          (id) =>
-            scrollDestination(
-              Math.max(0, (document.getElementById(id)?.offsetTop || 0) - 110),
-            ),
+        [
+          "home",
+          "about",
+          "skills",
+          "projects",
+          "certifications",
+          "gallery",
+          "contact",
+        ].map((id) =>
+          scrollDestination(
+            Math.max(0, (document.getElementById(id)?.offsetTop || 0) - 110),
+          ),
         ),
       );
     }
@@ -104,7 +111,7 @@ export default function Experience() {
     )
       return;
     const elements = document.querySelectorAll<HTMLElement>(
-      ".portfolio section > h2, .portfolio section > p, .skill-groups > div, .project-card, .gallery > a, .about-note",
+      ".portfolio section > h2, .portfolio section > p, .skill-groups > div, .project-card, .gallery > a, .about-note, .certification",
     );
     document.documentElement.classList.add("scroll-reveals");
     const observer = new IntersectionObserver(
@@ -198,15 +205,17 @@ export default function Experience() {
           <span className="brand-dot">.</span>
         </a>
         <nav aria-label="Main navigation">
-          {["about", "skills", "projects", "contact"].map((id) => (
-            <a
-              key={id}
-              href={sitePath(id === "contact" ? "/contact/" : `/#${id}`)}
-              aria-current={active === id ? "location" : undefined}
-            >
-              {id}
-            </a>
-          ))}
+          {["about", "skills", "projects", "certifications", "contact"].map(
+            (id) => (
+              <a
+                key={id}
+                href={sitePath(id === "contact" ? "/contact/" : `/#${id}`)}
+                aria-current={active === id ? "location" : undefined}
+              >
+                {id}
+              </a>
+            ),
+          )}
         </nav>
         <div className="mode-switch" aria-label="Presentation mode">
           <button

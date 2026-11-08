@@ -58,6 +58,33 @@ export default defineConfig({
   schema: {
     types: [
       defineType({
+        name: "certification",
+        title: "Certification",
+        type: "document",
+        fields: [
+          text("title", true),
+          text("issuer", true),
+          defineField({ name: "issuedOn", title: "Date issued", type: "date" }),
+          text("credentialType"),
+          text("description", false, "text"),
+          defineField({
+            name: "certificate",
+            title: "Scanned / e-certificate",
+            type: "file",
+            options: { accept: "application/pdf,image/*" },
+          }),
+          url("credentialUrl"),
+          order,
+        ],
+        validation: (r) =>
+          r.custom((value) =>
+            value?.certificate || value?.credentialUrl
+              ? true
+              : "Upload a certificate or provide a certificate URL.",
+          ),
+        preview: { select: { title: "title", subtitle: "issuer" } },
+      }),
+      defineType({
         name: "settings",
         title: "Site settings (one document)",
         type: "document",

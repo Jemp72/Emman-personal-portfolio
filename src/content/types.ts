@@ -9,6 +9,15 @@ export type Project = {
   demo?: string;
 };
 export type Portfolio = {
+  certifications: {
+    id: string;
+    title: string;
+    issuer: string;
+    issuedOn?: string;
+    description?: string;
+    credentialType?: string;
+    url: string;
+  }[];
   name: string;
   headline: string;
   intro: string;

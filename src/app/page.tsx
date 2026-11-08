@@ -132,9 +132,69 @@ export default async function Home() {
           </div>
           {!c.projects.length && <p>New projects are on their way.</p>}
         </section>
+        <section id="certifications">
+          <div className="section-top">
+            <span className="eyebrow">04 / CERTIFICATIONS</span>
+            <span>Along the learning path</span>
+          </div>
+          <h2>
+            Small steps.
+            <br />
+            <em>Lasting lessons.</em>
+          </h2>
+          <p>
+            Certificates from conferences, learning experiences, and
+            professional milestones.
+          </p>
+          <div className="certification-list">
+            {c.certifications.map((cert, i) => (
+              <article className="certification" key={cert.id}>
+                <span className="certification-number" aria-hidden="true">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <div>
+                  <div className="certification-meta">
+                    {cert.credentialType && <span>{cert.credentialType}</span>}
+                    {cert.issuedOn && (
+                      <time dateTime={cert.issuedOn}>
+                        {new Intl.DateTimeFormat("en", {
+                          month: "long",
+                          day: "numeric",
+                          year: "numeric",
+                          timeZone: "UTC",
+                        }).format(new Date(cert.issuedOn))}
+                      </time>
+                    )}
+                  </div>
+                  <h3>{cert.title}</h3>
+                  <p className="certification-issuer">{cert.issuer}</p>
+                  {cert.description && (
+                    <p className="certification-description">
+                      {cert.description}
+                    </p>
+                  )}
+                  <a
+                    className="text-link"
+                    href={cert.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`View certificate: ${cert.title} (opens in a new tab)`}
+                  >
+                    View certificate ↗
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+          {!c.certifications.length && (
+            <p className="certification-empty">
+              New learning milestones will appear here.
+            </p>
+          )}
+        </section>
         <section id="gallery">
           <div className="section-top">
-            <span className="eyebrow">04 / CREATIVE CORNER</span>
+            <span className="eyebrow">05 / CREATIVE CORNER</span>
             <span>Beyond the code</span>
           </div>
           <h2>
@@ -171,7 +231,7 @@ export default async function Home() {
           </div>
         </section>
         <section id="contact" className="contact">
-          <span className="eyebrow">05 / THE NEXT CHAPTER</span>
+          <span className="eyebrow">06 / THE NEXT CHAPTER</span>
           <h2>
             Have something
             <br />

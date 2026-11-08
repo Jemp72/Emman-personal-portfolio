@@ -7,6 +7,18 @@ const images = (prefix: string) =>
     .map(([, url]) => sitePath(url));
 // Verified against the supplied CV and ProjectDescriptions.md. AGAP = DARS, confirmed by owner.
 export const localContent: Portfolio = {
+  certifications: [
+    {
+      id: "certification-mcits-2026",
+      title: "Mindanao Conference of IT Students (MCITS) 2026",
+      issuer: "PSITE Davao Region · CHED XI",
+      issuedOn: "2026-10-14",
+      credentialType: "Participation & attendance",
+      description:
+        "Conference held at Davao del Norte State College, Panabo City. Includes certificates of participation and attendance.",
+      url: "https://cdn.sanity.io/files/8cs195in/production/ec3c0d7ed3352958ec7f3cc83cf746d96bc4bdc0.pdf",
+    },
+  ],
   name: "Jose Emmanuel G. Pedroso",
   headline: "A creative mind.\nA technical side.",
   intro:

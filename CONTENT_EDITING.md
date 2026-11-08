@@ -43,3 +43,9 @@ Public frontend reads use the published perspective. Required profile fields and
 ## Current scope
 
 The existing personal fields, skill groups, projects, output categories/images/descriptions, and résumé are managed here. The frog game, design/theme behavior, section heading copy, and contact-form interface remain code-defined. The contact form opens an email draft; Sanity does not receive contact submissions. Public draft preview is not enabled; review draft fields/images in Studio before publishing.
+
+## Certifications
+
+Open Certification in the Sanity editor to add, edit, unpublish, delete, or reorder records. Set title, issuer, optional date/type/description, and display order. Upload the scanned/e-certificate as a PDF or image, or provide an external credential URL. An upload takes priority if both are present. Publish when ready; certifications participate in the same automatic publishing checks as projects and outputs.
+
+The first entry is MCITS 2026, dated October 14, 2026. The original PDF contains both participation and attendance certificates. The public section uses text and a View certificate link, with no thumbnail grid.

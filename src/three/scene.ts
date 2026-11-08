@@ -147,6 +147,7 @@ export function createScene(
     [8, "ABOUT"],
     [16, "SKILLS"],
     [24, "PROJECTS"],
+    [28, "CERTIFICATES"],
     [30, "CREATIVE"],
     [36, "SAY HELLO"],
   ] as const) {

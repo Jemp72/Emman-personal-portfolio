@@ -5,7 +5,7 @@ let revision = "local",
   changed = process.env.GITHUB_EVENT_NAME !== "schedule";
 if (project) {
   const query =
-    '*[_type in ["settings","skillGroup","project","artwork"] && !(_id in path("drafts.**")) && !(_id in path("versions.**"))]|order(_id asc){_id,_rev}';
+    '*[_type in ["settings","skillGroup","project","artwork","certification"] && !(_id in path("drafts.**")) && !(_id in path("versions.**"))]|order(_id asc){_id,_rev}';
   const response = await fetch(
     `https://${project}.api.sanity.io/v2025-02-19/data/query/${process.env.SANITY_DATASET || "production"}?perspective=published&query=${encodeURIComponent(query)}`,
     {
