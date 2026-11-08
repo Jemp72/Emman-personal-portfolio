@@ -17,7 +17,7 @@ body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-nunito), Arial, sans-serif;
   font-size: 15px;
   line-height: 1.65;
 }
@@ -54,7 +54,7 @@ p {
 h1 {
   font-size: clamp(45px, 5.4vw, 82px);
   line-height: 1.05;
-  letter-spacing: -4px;
+  letter-spacing: -2.5px;
   font-weight: 500;
 }
 h2 {
@@ -71,7 +71,7 @@ h3 {
 }
 em,
 .serif {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-lora), Georgia, serif;
   font-weight: 400;
 }
 .italic,
@@ -254,7 +254,10 @@ em {
   padding: 26px 0;
 }
 .skill-number {
-  font: italic 20px Georgia;
+  font:
+    italic 20px var(--font-lora),
+    Georgia,
+    serif;
   color: #849372;
 }
 .skill-groups h3 {
@@ -404,11 +407,17 @@ em {
   gap: 10px;
 }
 .world-caption > span {
-  font: italic 24px Georgia;
+  font:
+    italic 24px var(--font-lora),
+    Georgia,
+    serif;
 }
 .world-caption small {
   display: block;
-  font: 10px Arial;
+  font:
+    10px var(--font-nunito),
+    Arial,
+    sans-serif;
   margin-top: 6px;
 }
 .world-caption .dark-button {
@@ -460,7 +469,10 @@ em {
   font-size: 12px;
 }
 .game-top b {
-  font: 36px Georgia;
+  font:
+    36px var(--font-lora),
+    Georgia,
+    serif;
   margin: 0 14px;
 }
 .game-top button {

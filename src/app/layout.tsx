@@ -2,6 +2,19 @@ import { sitePath } from "@/content/path";
 import type { Metadata } from "next";
 import "./globals.css";
 import ThemeToggle from "@/components/ThemeToggle";
+import { Nunito, Lora } from "next/font/google";
+
+const nunito = Nunito({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-nunito",
+});
+const lora = Lora({
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+  display: "swap",
+  variable: "--font-lora",
+});
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.SITE_URL || "http://localhost:3000"),
   icons: { icon: sitePath("/icon.svg") },
@@ -16,7 +29,11 @@ export const metadata: Metadata = {
 };
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${nunito.variable} ${lora.variable}`}
+      suppressHydrationWarning
+    >
       <body>
         <ThemeToggle />
         <a className="skip-link" href="#portfolio">
