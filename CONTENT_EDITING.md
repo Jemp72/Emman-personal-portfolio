@@ -8,7 +8,7 @@ Project: Emman Portfolio (`8cs195in`), production dataset. The editor uses Sanit
 
 ## Editing
 
-Open **Manage portfolio** in the public site's footer, then **Open portfolio editor**. Sign in using the GitHub account used to create the Sanity project.
+On the portfolio home page (outside Play), enter **↑ ↑ ↓ ↓ ← → ← → B A** on your keyboard, then select **Open portfolio editor**. You can also bookmark the `/admin/` page or the editor URL above. Sign in using the GitHub account used to create the Sanity project.
 
 - **Profile & site information:** name, homepage headline and introduction, biography, contact email, location, education, and résumé. This is a singleton: update this record rather than creating additional settings records.
 - **Skill group:** create/edit/delete groups, add/remove skill items, and set display order.

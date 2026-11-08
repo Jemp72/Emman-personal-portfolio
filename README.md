@@ -65,7 +65,7 @@ The Pages workflow builds on pushes to main and publishes out/. In repository Se
 
 ## Connected content editing
 
-The live site now uses the Emman Portfolio Sanity project. See CONTENT_EDITING.md for sign-in, editing, ordering, uploads, and publishing. Use Manage portfolio in the site footer. Published changes are checked every 15 minutes, with unchanged runs skipped; manual workflow runs are available for faster publishing. GitHub schedules may be delayed. The separate Studio is hosted at https://emman-portfolio-8cs195in.sanity.studio/ .
+The live site now uses the Emman Portfolio Sanity project. See CONTENT_EDITING.md for sign-in, editing, ordering, uploads, and publishing. On the homepage outside Play, enter the Konami code (up, up, down, down, left, right, left, right, B, A) to open the admin entry page. Published changes are checked every 15 minutes, with unchanged runs skipped; manual workflow runs are available for faster publishing. GitHub schedules may be delayed. The separate Studio is hosted at https://emman-portfolio-8cs195in.sanity.studio/ .
 
 ## Typography
 

@@ -252,7 +252,6 @@ export default async function Home() {
               © {new Date().getFullYear()} {c.name}
             </span>
             <a href="#home">Back to the top ↑</a>
-            <a href={sitePath("/admin/")}>Manage portfolio ↗</a>
           </footer>
         </section>
       </main>

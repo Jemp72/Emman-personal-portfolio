@@ -1196,4 +1196,8 @@ html[data-mode="explore"] .hero h1 {
     font-size: 21px;
   }
 }
-@media(min-width:641px) and (max-width:900px){.site-header nav a[href*="certifications"]{display:none;}}
+@media (min-width: 641px) and (max-width: 900px) {
+  .site-header nav a[href*="certifications"] {
+    display: none;
+  }
+}

@@ -51,3 +51,7 @@ Imported owner-approved profile, résumé, three skill groups, three projects, a
 ## Certifications — 8 November 2026
 
 Added a text-first certifications section, navigation/Explore landmark, and editable Sanity Certification documents. Seeded the owner-supplied MCITS 2026 two-page PDF into Sanity. Static export and lint passed. Chrome checks passed at 320, 390, 768, and 1440 pixels with no horizontal overflow; certificate metadata, external link, and PDF response verified. Light/dark layouts inspected. The hosted Studio schema deployed successfully. Certification IDs/revisions participate in automatic content-change checks. The PDF is stored in Sanity, not the GitHub repository.
+
+## Homepage admin shortcut — 8 November 2026
+
+The keyboard Konami sequence (up, up, down, down, left, right, left, right, B, A) opens the repository-prefixed admin page from the homepage in Explore or Simple mode. It is disabled during Play; keyboard repeats, modified shortcuts, composing input, and editable fields are ignored. The footer admin link and game A/B buttons are absent. Unit tests cover completion, case handling, reset, mistakes, and overlapping starts. Chrome verified both homepage modes, partial-sequence behavior, game exclusion, and the admin destination. Sanity authentication still controls editing.

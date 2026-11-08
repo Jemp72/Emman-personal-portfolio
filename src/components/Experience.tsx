@@ -2,6 +2,7 @@
 import { sitePath } from "@/content/path";
 
 import { useEffect, useRef, useState } from "react";
+import { createKonamiMatcher } from "@/three/konami";
 import ThemeToggle from "./ThemeToggle";
 import type { SceneController } from "@/three/scene";
 import { newGame, scrollDestination, type Game } from "@/three/game";
@@ -134,6 +135,27 @@ export default function Experience() {
     };
   }, [mode]);
   useEffect(() => {
+    if (playing) return;
+    let match = createKonamiMatcher();
+    function shortcut(e: KeyboardEvent) {
+      if (e.repeat || e.ctrlKey || e.metaKey || e.altKey || e.isComposing)
+        return;
+      if (
+        e.target instanceof HTMLElement &&
+        e.target.closest("input,textarea,select,[contenteditable]")
+      ) {
+        match = createKonamiMatcher();
+        return;
+      }
+      if (match(e.key)) {
+        e.preventDefault();
+        window.location.assign(sitePath("/admin/"));
+      }
+    }
+    addEventListener("keydown", shortcut);
+    return () => removeEventListener("keydown", shortcut);
+  }, [playing]);
+  useEffect(() => {
     if (!playing) return;
     const main = document.getElementById("portfolio");
     main?.setAttribute("inert", "");
@@ -141,6 +163,7 @@ export default function Experience() {
     document.documentElement.dataset.playing = "true";
     dialog.current?.focus();
     function key(e: KeyboardEvent) {
+      if (e.ctrlKey || e.metaKey || e.altKey || e.isComposing) return;
       const moves: Record<string, [number, number]> = {
         ArrowUp: [0, 1],
         w: [0, 1],
