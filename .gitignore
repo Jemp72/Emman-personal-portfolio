@@ -9,3 +9,6 @@ studio/dist/
 
 studio/.sanity/
 content-source/contact-sheet.jpg
+
+.sanity-import/
+public/cms-revision.json

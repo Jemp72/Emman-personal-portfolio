@@ -17,7 +17,14 @@ export type Portfolio = {
   location: string;
   resume?: string;
   education?: string;
+  studioUrl?: string;
   skills: { category: string; items: string[] }[];
   projects: Project[];
-  gallery: { title: string; category: string; image: string }[];
+  gallery: {
+    title: string;
+    category: string;
+    image: string;
+    alt?: string;
+    description?: string;
+  }[];
 };

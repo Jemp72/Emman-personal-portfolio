@@ -157,12 +157,15 @@ export default async function Home() {
               >
                 <img
                   src={a.image}
-                  alt={a.title}
+                  alt={a.alt || a.title}
                   loading="lazy"
                   width={600}
                   height={700}
                 />
                 <span>{a.category} ↗</span>
+                {a.description && (
+                  <p className="output-description">{a.description}</p>
+                )}
               </a>
             ))}
           </div>
@@ -189,6 +192,7 @@ export default async function Home() {
               © {new Date().getFullYear()} {c.name}
             </span>
             <a href="#home">Back to the top ↑</a>
+            <a href={sitePath("/admin/")}>Manage portfolio ↗</a>
           </footer>
         </section>
       </main>

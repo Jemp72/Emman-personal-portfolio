@@ -62,3 +62,7 @@ Each Play run gets a new random seed. Lanes use deterministic values derived fro
 ## GitHub Pages
 
 The Pages workflow builds on pushes to main and publishes out/. In repository Settings > Pages, select GitHub Actions. Expected URL: https://Jemp72.github.io/Emman-personal-portfolio/ . The workflow sets NEXT_PUBLIC_BASE_PATH=/Emman-personal-portfolio; omit this for local development or root-domain hosting. Configure Sanity project/dataset as repository variables and its read token as a secret when connecting the CMS. CMS changes require a new workflow run.
+
+## Connected content editing
+
+The live site now uses the Emman Portfolio Sanity project. See CONTENT_EDITING.md for sign-in, editing, ordering, uploads, and publishing. Use Manage portfolio in the site footer. Published changes are checked every 15 minutes, with unchanged runs skipped; manual workflow runs are available for faster publishing. GitHub schedules may be delayed. The separate Studio is hosted at https://emman-portfolio-8cs195in.sanity.studio/ .

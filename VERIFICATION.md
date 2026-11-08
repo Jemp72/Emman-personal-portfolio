@@ -43,3 +43,7 @@ The CV supplies the biography, skills, email, education, and downloadable resume
 ## Random traffic update
 
 Six rule tests pass, including same-seed reproducibility, different-seed variation, speed/count bounds, spacing across 4,440 lane/seed combinations, and collision agreement with seeded car positions. Traffic difficulty ramps over 100 rows. This is an initial tuning pass, not a claim of playtested difficulty for every player.
+
+## Connected Sanity workflow — 8 November 2026
+
+Imported owner-approved profile, résumé, three skill groups, three projects, and twelve creative outputs into Sanity project 8cs195in. The hosted editor and schemas deployed successfully. Authenticated CLI tests passed create, draft isolation, publish, edit, order, and delete with temporary records cleaned up. A static export using real CMS content passed, including all project pages and the admin entry page. Public data reads use the published perspective. Automatic change checks are scheduled every 15 minutes; GitHub timing is not guaranteed.
