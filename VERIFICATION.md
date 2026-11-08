@@ -55,3 +55,7 @@ Added a text-first certifications section, navigation/Explore landmark, and edit
 ## Homepage admin shortcut — 8 November 2026
 
 The keyboard Konami sequence (up, up, down, down, left, right, left, right, B, A) opens the repository-prefixed admin page from the homepage in Explore or Simple mode. It is disabled during Play; keyboard repeats, modified shortcuts, composing input, and editable fields are ignored. The footer admin link and game A/B buttons are absent. Unit tests cover completion, case handling, reset, mistakes, and overlapping starts. Chrome verified both homepage modes, partial-sequence behavior, game exclusion, and the admin destination. Sanity authentication still controls editing.
+
+## Desktop Explore split — 8 November 2026
+
+Explore now reserves 70% of the desktop viewport for content (including its gutters) and 30% for the woodland canvas. The gradient and captions follow the narrower canvas. Mobile stays stacked; Play remains full-screen. Production export passed; Chrome verified canvas width at tablet/desktop, no horizontal overflow at 390/768/1440px, and full-width canvas in Play.
