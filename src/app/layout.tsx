@@ -2,18 +2,18 @@ import { sitePath } from "@/content/path";
 import type { Metadata } from "next";
 import "./globals.css";
 import ThemeToggle from "@/components/ThemeToggle";
-import { JetBrains_Mono, Nunito, Roboto_Mono } from "next/font/google";
+import { Lora, Space_Grotesk, Roboto_Mono } from "next/font/google";
 
-const nunito = Nunito({
+const space = Space_Grotesk({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-nunito",
+  variable: "--font-space",
 });
-const jetBrains = JetBrains_Mono({
+const lora = Lora({
   subsets: ["latin"],
   style: ["normal", "italic"],
   display: "swap",
-  variable: "--font-jetbrains",
+  variable: "--font-lora",
 });
 const robotoMono = Roboto_Mono({
   subsets: ["latin"],
@@ -36,7 +36,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html
       lang="en"
-      className={`${nunito.variable} ${jetBrains.variable} ${robotoMono.variable}`}
+      className={`${space.variable} ${lora.variable} ${robotoMono.variable}`}
       suppressHydrationWarning
     >
       <body>

@@ -261,6 +261,23 @@ export default function Experience() {
           aria-label="Interactive frog world"
         >
           <div className="scene-host" ref={host} />
+          {ready && !failed && (
+            <div className="world-atmosphere" aria-hidden="true">
+              {[9, 24, 41, 56, 69, 78, 88, 96].map((left, index) => (
+                <span
+                  key={left}
+                  style={
+                    {
+                      left: `${left}%`,
+                      ["--glow-y"]: `${18 + ((index * 19) % 68)}%`,
+                      animationDelay: `${-index * 4.7}s`,
+                      animationDuration: `${16 + (index % 3) * 5}s`,
+                    } as React.CSSProperties
+                  }
+                />
+              ))}
+            </div>
+          )}
           {(!ready || failed) && (
             <div className="scene-message">
               {failed

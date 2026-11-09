@@ -69,11 +69,8 @@ The live site now uses the Emman Portfolio Sanity project. See CONTENT_EDITING.m
 
 ## Typography
 
-Nunito is the primary typeface for body text, navigation, headings, and form controls. JetBrains Mono provides the technical headline, display accents, and score numerals. Roboto Mono is used for small labels and metadata. Fonts are bundled by Next.js for self-hosted delivery.
+Space Grotesk is the primary typeface for body text, navigation, and the technical headline. Lora adds a calligraphic accent to the creative headline and other display text. Roboto Mono is used for small labels and metadata. Fonts are bundled by Next.js for self-hosted delivery.
 
-- Nunito: Vernon Adams, Cyreal, Jacques Le Bailly — https://fonts.google.com/specimen/Nunito
-- JetBrains Mono — https://fonts.google.com/specimen/JetBrains+Mono
-- Roboto Mono — https://fonts.google.com/specimen/Roboto+Mono
 
 ## Certifications
 

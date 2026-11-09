@@ -17,7 +17,7 @@ body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
-  font-family: var(--font-nunito), Arial, sans-serif;
+  font-family: var(--font-space), Arial, sans-serif;
   font-size: 15px;
   line-height: 1.65;
 }
@@ -70,8 +70,8 @@ h3 {
   letter-spacing: -0.6px;
 }
 em,
-.technical {
-  font-family: var(--font-jetbrains), monospace;
+.creative {
+  font-family: var(--font-lora), Georgia, serif;
   font-weight: 400;
 }
 .italic,
@@ -255,8 +255,9 @@ em {
 }
 .skill-number {
   font:
-    italic 20px var(--font-jetbrains),
-    monospace;
+    italic 20px var(--font-lora),
+    Georgia,
+    serif;
   color: #849372;
 }
 .skill-groups h3 {
@@ -407,8 +408,9 @@ em {
 }
 .world-caption > span {
   font:
-    italic 24px var(--font-jetbrains),
-    monospace;
+    italic 24px var(--font-lora),
+    Georgia,
+    serif;
 }
 .world-caption small {
   display: block;
@@ -465,8 +467,9 @@ em {
 }
 .game-top b {
   font:
-    36px var(--font-jetbrains),
-    monospace;
+    36px var(--font-lora),
+    Georgia,
+    serif;
   margin: 0 14px;
 }
 .game-top button {
@@ -1144,8 +1147,9 @@ html[data-mode="explore"] .hero h1 {
 }
 .certification-number {
   font:
-    italic 22px var(--font-jetbrains),
-    monospace;
+    italic 22px var(--font-lora),
+    Georgia,
+    serif;
   color: var(--muted);
   padding-top: 3px;
 }
@@ -1244,11 +1248,93 @@ html[data-mode="explore"] .hero h1 {
 .certification-meta {
   font-family: var(--font-roboto-mono), monospace;
 }
-.hero h1 .technical {
-  font-size: 0.78em;
+.hero h1 .creative {
+  font-size: 0.96em;
 }
 @media (max-width: 640px) {
-  .hero h1 .technical {
-    font-size: clamp(1.55rem, 8.4vw, 2.55rem);
+  .hero h1 {
+    font-size: clamp(2rem, 10.5vw, 3.25rem);
+  }
+}
+
+.world-atmosphere {
+  position: absolute;
+  inset: 88px 0 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+  --leaf-fall: 105svh;
+}
+.world-atmosphere span {
+  position: absolute;
+  top: -12px;
+  width: 9px;
+  height: 6px;
+  border-radius: 85% 0 85% 0;
+  background: #8b9957;
+  animation: woodland-leaf linear infinite;
+}
+.world-atmosphere span:nth-child(3n) {
+  background: #b58e54;
+  width: 7px;
+}
+[data-theme="dark"] .world-atmosphere span {
+  top: var(--glow-y);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #eddf9e;
+  box-shadow: 0 0 8px 2px #e8ce6670;
+  animation-name: woodland-firefly;
+  animation-timing-function: ease-in-out;
+}
+.world-playing .world-atmosphere {
+  inset: 0;
+}
+@keyframes woodland-leaf {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(15deg);
+    opacity: 0;
+  }
+  14%,
+  85% {
+    opacity: 0.38;
+  }
+  45% {
+    transform: translate3d(-27px, calc(var(--leaf-fall) * 0.45), 0)
+      rotate(145deg);
+  }
+  100% {
+    transform: translate3d(34px, var(--leaf-fall), 0) rotate(350deg);
+    opacity: 0;
+  }
+}
+@keyframes woodland-firefly {
+  0%,
+  100% {
+    opacity: 0.15;
+    transform: translate3d(0, 0, 0);
+  }
+  35% {
+    opacity: 0.6;
+    transform: translate3d(18px, -16px, 0);
+  }
+  70% {
+    opacity: 0.28;
+    transform: translate3d(-10px, -24px, 0);
+  }
+}
+@media (max-width: 640px) {
+  .world:not(.world-playing) .world-atmosphere {
+    inset-block-start: 74px;
+    --leaf-fall: 42svh;
+  }
+  .world-atmosphere span:nth-child(even) {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .world-atmosphere {
+    display: none;
   }
 }
