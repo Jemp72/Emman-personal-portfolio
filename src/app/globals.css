@@ -70,8 +70,8 @@ h3 {
   letter-spacing: -0.6px;
 }
 em,
-.serif {
-  font-family: var(--font-lora), Georgia, serif;
+.technical {
+  font-family: var(--font-jetbrains), monospace;
   font-weight: 400;
 }
 .italic,
@@ -255,9 +255,8 @@ em {
 }
 .skill-number {
   font:
-    italic 20px var(--font-lora),
-    Georgia,
-    serif;
+    italic 20px var(--font-jetbrains),
+    monospace;
   color: #849372;
 }
 .skill-groups h3 {
@@ -408,16 +407,12 @@ em {
 }
 .world-caption > span {
   font:
-    italic 24px var(--font-lora),
-    Georgia,
-    serif;
+    italic 24px var(--font-jetbrains),
+    monospace;
 }
 .world-caption small {
   display: block;
-  font:
-    10px var(--font-nunito),
-    Arial,
-    sans-serif;
+  font-size: 10px;
   margin-top: 6px;
 }
 .world-caption .dark-button {
@@ -470,9 +465,8 @@ em {
 }
 .game-top b {
   font:
-    36px var(--font-lora),
-    Georgia,
-    serif;
+    36px var(--font-jetbrains),
+    monospace;
   margin: 0 14px;
 }
 .game-top button {
@@ -1150,9 +1144,8 @@ html[data-mode="explore"] .hero h1 {
 }
 .certification-number {
   font:
-    italic 22px var(--font-lora),
-    Georgia,
-    serif;
+    italic 22px var(--font-jetbrains),
+    monospace;
   color: var(--muted);
   padding-top: 3px;
 }
@@ -1213,16 +1206,17 @@ html[data-mode="explore"] .hero h1 {
     max-width: 64ch;
   }
   .world:not(.world-playing) .scene-host {
-    left: 60%;
+    left: 0;
   }
   .world:not(.world-playing)::after {
     background:
       linear-gradient(
         90deg,
-        var(--paper) 0%,
-        var(--paper) 60%,
-        color-mix(in srgb, var(--paper) 65%, transparent) 63%,
-        transparent 70%
+        color-mix(in srgb, var(--paper) 92%, transparent) 0% 48%,
+        color-mix(in srgb, var(--paper) 90%, transparent) 54%,
+        color-mix(in srgb, var(--paper) 68%, transparent) 61%,
+        color-mix(in srgb, var(--paper) 28%, transparent) 70%,
+        transparent 79%
       ),
       linear-gradient(0deg, var(--paper), transparent 17%);
   }
@@ -1239,5 +1233,22 @@ html[data-mode="explore"] .hero h1 {
   }
   .world:not(.world-playing) .scene-message {
     left: 60%;
+  }
+}
+
+.eyebrow,
+.hero-foot,
+.project-meta,
+.world-label,
+.world-caption small,
+.certification-meta {
+  font-family: var(--font-roboto-mono), monospace;
+}
+.hero h1 .technical {
+  font-size: 0.78em;
+}
+@media (max-width: 640px) {
+  .hero h1 .technical {
+    font-size: clamp(1.55rem, 8.4vw, 2.55rem);
   }
 }

@@ -14,7 +14,7 @@ export default async function Home() {
           </div>
           <h1>
             {c.headline.split("\n").map((line, i) => (
-              <span key={line} className={i ? "serif italic" : ""}>
+              <span key={line} className={i ? "technical italic" : ""}>
                 {line}
                 <br />
               </span>

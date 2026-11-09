@@ -228,9 +228,12 @@ export function createScene(
     const w = host.clientWidth,
       h = host.clientHeight;
     renderer.setSize(w, h);
-    const view = w < 500 ? 7 : 8;
-    camera.left = (-view * w) / h;
-    camera.right = (view * w) / h;
+    const desktopExplore = !playing && matchMedia("(min-width: 641px)").matches;
+    const view = (desktopExplore ? w * 0.4 : w) < 500 ? 7 : 8;
+    const halfWidth = (view * w) / h;
+    const offset = desktopExplore ? halfWidth * 0.6 : 0;
+    camera.left = -halfWidth - offset;
+    camera.right = halfWidth - offset;
     camera.top = view;
     camera.bottom = -view;
     camera.updateProjectionMatrix();
@@ -336,6 +339,7 @@ export function createScene(
     play: () => {
       dirty = true;
       playing = true;
+      resize();
       signs.visible = false;
       requestedRow = NaN;
       g = newGame(crypto.getRandomValues(new Uint32Array(1))[0]);
@@ -344,6 +348,7 @@ export function createScene(
     },
     exit: () => {
       playing = false;
+      resize();
       signs.visible = true;
       requestedRow = NaN;
       dirty = true;
