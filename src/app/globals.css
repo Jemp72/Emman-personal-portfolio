@@ -297,7 +297,7 @@ em {
   transition: transform 0.3s;
 }
 html[data-mode="explore"] .project-image {
-  width: min(86%, 640px);
+  width: min(70%, 560px);
   margin-inline: auto;
 }
 .project-card:hover img {
