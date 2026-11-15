@@ -9,7 +9,8 @@
   body {
     cursor: var(--leaf-cursor), auto;
   }
-  a[href], button:not(:disabled) {
+  a[href],
+  button:not(:disabled) {
     cursor: var(--leaf-cursor), pointer;
   }
 }
@@ -838,13 +839,16 @@ html[data-mode="explore"] .world:not(.world-playing) {
     linear-gradient(0deg, var(--paper), transparent 17%);
 }
 .world-label {
-  z-index: 2;
+  position: fixed;
+  z-index: 3;
   top: 115px;
   left: auto;
   right: 5%;
 }
 .world-caption {
-  z-index: 2;
+  position: fixed;
+  z-index: 3;
+  pointer-events: none;
   left: 62%;
   right: 4%;
   bottom: 35px;
@@ -1000,30 +1004,47 @@ html[data-mode="explore"] .hero h1 {
   padding: 4px 14px;
   border-radius: 8px;
 }
-/* On phones, content scrolls behind the shorter woodland header. */
+/* On phones, the woodland fades in above the bottom fifth of the screen. */
 @media (max-width: 640px) {
   html[data-mode="explore"] .world:not(.world-playing) {
-    height: calc(74px + 37svh);
-    z-index: 3;
-    bottom: auto;
-    background: var(--paper);
+    top: auto;
+    bottom: 0;
+    height: 34svh;
+    z-index: 1;
   }
   .world:not(.world-playing) .scene-host {
-    top: 74px;
-    height: 37svh;
+    inset: 0;
+    height: 100%;
   }
   .world:not(.world-playing)::after {
-    background: linear-gradient(0deg, var(--paper), transparent 16%);
+    background: linear-gradient(
+      to bottom,
+      var(--paper),
+      color-mix(in srgb, var(--paper) 92%, transparent) 19%,
+      color-mix(in srgb, var(--paper) 65%, transparent) 35%,
+      transparent 60%
+    );
   }
-  .world:not(.world-playing) .world-caption {
+  .world-caption {
+    position: fixed;
     top: auto;
-    bottom: 14px;
+    bottom: max(14px, env(safe-area-inset-bottom));
+  }
+  .world-label {
+    display: none;
+  }
+  .world:not(.world-playing) .scene-message {
+    top: auto;
+    bottom: 0;
+    height: 20svh;
   }
   html[data-mode="explore"] .portfolio {
-    padding-top: 37svh;
+    padding-top: 0;
+    padding-bottom: calc(20svh + env(safe-area-inset-bottom));
   }
   html[data-mode="explore"] .portfolio section {
-    scroll-margin-top: calc(37svh + 15px);
+    background: transparent;
+    scroll-margin-top: 15px;
   }
   .mode-switch button,
   .theme-toggle {
@@ -1242,14 +1263,14 @@ html[data-mode="explore"] .hero h1 {
       ),
       linear-gradient(0deg, var(--paper), transparent 17%);
   }
-  .world:not(.world-playing) .world-caption {
+  .world-caption {
     left: 82%;
     right: 3%;
     flex-direction: column;
     align-items: flex-start;
     gap: 16px;
   }
-  .world:not(.world-playing) .world-label {
+  .world-label {
     right: 3%;
     max-width: 16%;
   }
@@ -1344,8 +1365,8 @@ html[data-mode="explore"] .hero h1 {
 }
 @media (max-width: 640px) {
   .world:not(.world-playing) .world-atmosphere {
-    inset-block-start: 74px;
-    --leaf-fall: 42svh;
+    inset-block-start: 0;
+    --leaf-fall: 34svh;
   }
   .world-atmosphere span:nth-child(even) {
     display: none;

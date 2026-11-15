@@ -229,7 +229,12 @@ export function createScene(
       h = host.clientHeight;
     renderer.setSize(w, h);
     const desktopExplore = !playing && matchMedia("(min-width: 641px)").matches;
-    const view = (desktopExplore ? w * 0.2 : w) < 500 ? 7 : 8;
+    const mobileExplore = !playing && !desktopExplore;
+    const view = mobileExplore
+      ? 3.25
+      : (desktopExplore ? w * 0.2 : w) < 500
+        ? 7
+        : 8;
     const halfWidth = (view * w) / h;
     const offset = desktopExplore ? halfWidth * 0.8 : 0;
     camera.left = -halfWidth - offset;
@@ -290,7 +295,7 @@ export function createScene(
     host.dataset.signs = playing ? "hidden" : "visible";
     const z = frog.position.z;
     camera.position.set(10, 12, z + 12);
-    camera.lookAt(0, 0, z - 2);
+    camera.lookAt(0, 0, z - (!playing && host.clientWidth <= 640 ? 0.45 : 2));
     stars.position.z = z;
     light.position.set(-6, 16, z + 8);
     light.target.position.set(0, 0, z);
