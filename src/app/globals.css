@@ -1,4 +1,18 @@
 @import "tailwindcss";
+@media (any-pointer: fine) {
+  :root {
+    --leaf-cursor: url("./leaf-light.svg") 1 1;
+  }
+  :root[data-theme="dark"] {
+    --leaf-cursor: url("./leaf-dark.svg") 1 1;
+  }
+  body {
+    cursor: var(--leaf-cursor), auto;
+  }
+  a[href], button:not(:disabled) {
+    cursor: var(--leaf-cursor), pointer;
+  }
+}
 :root {
   --paper: #f6f4eb;
   --ink: #263f32;
