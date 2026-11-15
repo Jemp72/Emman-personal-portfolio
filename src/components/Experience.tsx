@@ -355,17 +355,19 @@ export default function Experience({ logo }: { logo?: string }) {
           </div>
           {game.status !== "playing" && (
             <div className="game-card">
-              <span className="eyebrow">ONE HOP AT A TIME</span>
               <h2>
                 {game.status === "ready"
                   ? "How far can you hop?"
                   : game.status === "lost"
-                    ? "A little road bump."
-                    : "Take a breath."}
+                    ? "Back to the lily pad?"
+                    : "Taking a breather?"}
               </h2>
               <p>
-                Use arrow keys, WASD, or the buttons below. Cross the roads,
-                avoid the cars, and keep going. The woodland never ends.
+                {game.status === "ready"
+                  ? "Dodge cars with the arrow keys, WASD, or the buttons below."
+                  : game.status === "lost"
+                    ? `A car caught you. You made it ${game.score} ${game.score === 1 ? "row" : "rows"} into the woodland.`
+                    : "Your frog will wait right here."}
               </p>
               <button
                 className="dark-button"
@@ -378,8 +380,8 @@ export default function Experience({ logo }: { logo?: string }) {
                 {game.status === "ready"
                   ? "Let’s hop →"
                   : game.status === "paused"
-                    ? "Keep going →"
-                    : "Try again →"}
+                    ? "Resume crossing →"
+                    : "Hop again →"}
               </button>
             </div>
           )}
