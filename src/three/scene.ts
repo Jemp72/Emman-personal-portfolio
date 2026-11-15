@@ -142,6 +142,7 @@ export function createScene(
   const signs = new T.Group();
   scene.add(signs);
   const signGroups: T.Group[] = [];
+  const featuredLandmarks: T.Group[] = [];
   for (const [r, label] of [
     [0, "HELLO"],
     [8, "ABOUT"],
@@ -167,6 +168,9 @@ export function createScene(
     sign.position.z = -r;
     signs.add(sign);
     signGroups.push(sign);
+    if (label === "PROJECTS" || label === "CREATIVE" || label === "SAY HELLO") {
+      featuredLandmarks.push(sign);
+    }
     sprite.position.set(-2, 1.4, 0);
     sprite.scale.set(2.2, 0.69, 1);
     sign.add(sprite);
@@ -206,6 +210,10 @@ export function createScene(
     stars.visible = night;
     dirty = true;
     host.dataset.theme = night ? "dark" : "light";
+    // Paint the canvas before the browser captures the incoming theme.
+    if (document.documentElement.dataset.themeSweep) {
+      renderer.render(scene, camera);
+    }
   }
   window.addEventListener("portfolio-theme", theme);
   theme();
@@ -215,6 +223,7 @@ export function createScene(
     hopDuration = 0.25;
   let requestedRow = NaN,
     requestedX = NaN;
+  let landmarkFraming = 0;
   const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
   let g = newGame(),
     playing = false,
@@ -294,8 +303,37 @@ export function createScene(
     host.dataset.lanes = String(lanes.size);
     host.dataset.signs = playing ? "hidden" : "visible";
     const z = frog.position.z;
+    const mobileExplore = !playing && host.clientWidth <= 640;
+    const animateFraming = !playing && !reducedMotion.matches;
+    let framingTarget = 0;
+    if (animateFraming) {
+      const radius = mobileExplore ? 2.5 : 4;
+      for (const landmark of featuredLandmarks) {
+        const proximity =
+          1 - Math.min(1, Math.abs(z - landmark.position.z) / radius);
+        framingTarget = Math.max(
+          framingTarget,
+          proximity ** 2 * (3 - 2 * proximity),
+        );
+      }
+    }
+    const framingDelta = framingTarget - landmarkFraming;
+    landmarkFraming =
+      !animateFraming || Math.abs(framingDelta) < 0.001
+        ? framingTarget
+        : landmarkFraming - framingDelta * Math.expm1(-dt * 5);
+    const zoom = 1 + landmarkFraming * (mobileExplore ? 0.055 : 0.1);
+    if (zoom !== camera.zoom) {
+      camera.zoom = zoom;
+      camera.updateProjectionMatrix();
+      dirty = true;
+    }
     camera.position.set(10, 12, z + 12);
-    camera.lookAt(0, 0, z - (!playing && host.clientWidth <= 640 ? 0.45 : 2));
+    camera.lookAt(
+      0,
+      0,
+      z - (mobileExplore ? 0.45 : 2) - landmarkFraming * (mobileExplore ? 0.2 : 0.55),
+    );
     stars.position.z = z;
     light.position.set(-6, 16, z + 8);
     light.target.position.set(0, 0, z);

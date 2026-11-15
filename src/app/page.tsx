@@ -14,10 +14,6 @@ export default async function Home() {
       <Experience logo={c.logo} />
       <main id="portfolio" className="portfolio">
         <section id="home" className="hero">
-          <div className="eyebrow">
-            <span className="tiny-line" /> THE PORTFOLIO OF{" "}
-            {c.name.toUpperCase()}
-          </div>
           <h1>
             {c.headline.split("\n").map((line, i) => (
               <span
@@ -32,26 +28,16 @@ export default async function Home() {
           <p className="intro">{c.intro}</p>
           <div className="actions">
             <a href="#projects" className="dark-button">
-              Discover my work <span>↘</span>
-            </a>
-            <a href="#about" className="text-link">
-              A little about me ↗
+              View projects <span aria-hidden="true">↘</span>
             </a>
           </div>
           <div className="hero-foot">
             <span>
-              BASED IN
-              <br />
-              <b>{c.location}</b>
+              <b>{c.name}</b> · {c.location}
             </span>
-            <span className="scroll-note">SCROLL TO WANDER ↓</span>
           </div>
         </section>
         <section id="about">
-          <div className="section-top">
-            <span className="eyebrow">01 / THE PERSON</span>
-            <span>Code meets creativity</span>
-          </div>
           <h2>
             Let me introduce <em>myself</em>
           </h2>
@@ -98,15 +84,10 @@ export default async function Home() {
           )}
         </section>
         <section id="skills">
-          <div className="section-top">
-            <span className="eyebrow">02 / THE TOOLKIT</span>
-            <span>Always learning</span>
-          </div>
           <h2>Here&apos;s what I can do</h2>
           <div className="skill-groups">
-            {c.skills.map((s, i) => (
+            {c.skills.map((s) => (
               <div key={s.category}>
-                <span className="skill-number">0{i + 1}</span>
                 <div>
                   <h3>{s.category}</h3>
                   <div className="tags">
@@ -120,13 +101,9 @@ export default async function Home() {
           </div>
         </section>
         <section id="projects">
-          <div className="section-top">
-            <span className="eyebrow">03 / SELECTED WORK</span>
-            <span>Ideas, made real</span>
-          </div>
           <h2>Selected projects</h2>
           <div className="projects">
-            {c.projects.map((p, i) => (
+            {c.projects.map((p) => (
               <a
                 className="project-card"
                 href={sitePath(`/projects/${p.slug}/`)}
@@ -145,7 +122,6 @@ export default async function Home() {
                   <span className="project-arrow">↗</span>
                 </div>
                 <div className="project-meta">
-                  <span>0{i + 1} / WEB DEVELOPMENT</span>
                   <span>{p.technologies.slice(0, 2).join(" · ")}</span>
                 </div>
                 <h3>{p.title}</h3>
@@ -156,21 +132,10 @@ export default async function Home() {
           {!c.projects.length && <p>New projects are on their way.</p>}
         </section>
         <section id="certifications">
-          <div className="section-top">
-            <span className="eyebrow">04 / CERTIFICATIONS</span>
-            <span>Along the learning path</span>
-          </div>
           <h2>Certifications</h2>
-          <p>
-            Certificates from conferences, learning experiences, and
-            professional milestones.
-          </p>
           <div className="certification-list">
-            {c.certifications.map((cert, i) => (
+            {c.certifications.map((cert) => (
               <article className="certification" key={cert.id}>
-                <span className="certification-number" aria-hidden="true">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
                 <div>
                   <div className="certification-meta">
                     {cert.credentialType && <span>{cert.credentialType}</span>}
@@ -212,10 +177,6 @@ export default async function Home() {
           )}
         </section>
         <section id="gallery">
-          <div className="section-top">
-            <span className="eyebrow">05 / CREATIVE CORNER</span>
-            <span>Beyond the code</span>
-          </div>
           <h2>Creative work</h2>
           <p>
             Digital illustrations, publication materials, and graphic
@@ -262,7 +223,6 @@ export default async function Home() {
           </ul>
         </section>
         <section id="contact" className="contact">
-          <span className="eyebrow">06 / THE NEXT CHAPTER</span>
           <h2>Have something in mind?</h2>
           <p>
             I’d love to hear about it. Let’s bring a little creativity to your

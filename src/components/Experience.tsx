@@ -310,12 +310,9 @@ export default function Experience({ logo }: { logo?: string }) {
       )}
       {mode === "explore" && !playing && ready && !failed && (
         <>
-          <div className="world-label">
-            <span className="live-dot" /> A LITTLE WORLD TO EXPLORE
-          </div>
           <div className="world-caption">
             <span>
-              Follow the frog.<small>Scroll to take the next step.</small>
+              Scroll to guide the frog.
             </span>
             <button
               ref={playButton}

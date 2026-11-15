@@ -1,6 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
 
+let themeSweep: ViewTransition | undefined;
+
 export default function ThemeToggle({ inGame = false }: { inGame?: boolean }) {
   const [dark, setDark] = useState(false);
   useEffect(() => {
@@ -26,12 +28,33 @@ export default function ThemeToggle({ inGame = false }: { inGame?: boolean }) {
     };
   }, []);
   function toggle() {
-    const theme = dark ? "light" : "dark";
-    document.documentElement.dataset.theme = theme;
-    try {
-      localStorage.setItem("portfolio-theme", theme);
-    } catch {}
-    window.dispatchEvent(new Event("portfolio-theme"));
+    const root = document.documentElement;
+    const theme = root.dataset.theme === "dark" ? "light" : "dark";
+    function applyTheme() {
+      root.dataset.theme = theme;
+      try {
+        localStorage.setItem("portfolio-theme", theme);
+      } catch {}
+      window.dispatchEvent(new Event("portfolio-theme"));
+    }
+    if (themeSweep) return;
+    if (
+      !document.startViewTransition ||
+      inGame ||
+      root.dataset.mode !== "explore" ||
+      matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      applyTheme();
+      return;
+    }
+    root.dataset.themeSweep = theme;
+    themeSweep = document.startViewTransition(applyTheme);
+    void themeSweep.finished
+      .finally(() => {
+        delete root.dataset.themeSweep;
+        themeSweep = undefined;
+      })
+      .catch(() => {});
   }
   return (
     <button
