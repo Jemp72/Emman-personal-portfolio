@@ -47,7 +47,10 @@
 :root {
   --paper: #f6f4eb;
   --ink: #263f32;
-  --muted: #6d7769;
+  --muted: #576455;
+  --text-body: 1rem;
+  --text-supporting: 0.9375rem;
+  --text-metadata: 0.75rem;
   --line: #daddcf;
   --accent: #d3e5a7;
 }
@@ -63,7 +66,7 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-family: var(--font-space), Arial, sans-serif;
-  font-size: 15px;
+  font-size: var(--text-body);
   line-height: 1.65;
 }
 a {
@@ -95,6 +98,11 @@ p {
 }
 p {
   color: var(--muted);
+  text-wrap: pretty;
+}
+h2,
+h3 {
+  text-wrap: balance;
 }
 h1 {
   font-size: clamp(45px, 5.4vw, 82px);
@@ -339,13 +347,13 @@ html[data-mode="explore"] .project-image {
   display: flex;
   justify-content: space-between;
   gap: 10px;
-  font-size: 9px;
-  letter-spacing: 0.8px;
+  font-size: var(--text-metadata);
+  letter-spacing: 0.02em;
   margin: 15px 0 9px;
   color: var(--muted);
 }
 .project-card p {
-  font-size: 13px;
+  font-size: var(--text-supporting);
   margin-top: 8px;
 }
 .gallery {
@@ -1151,8 +1159,8 @@ html[data-mode="explore"] .hero h1 {
   display: flex;
   flex-wrap: wrap;
   gap: 8px 18px;
-  font-size: 10px;
-  letter-spacing: 0.7px;
+  font-size: var(--text-metadata);
+  letter-spacing: 0.02em;
   color: var(--muted);
   margin-bottom: 12px;
 }
@@ -1164,13 +1172,13 @@ html[data-mode="explore"] .hero h1 {
   line-height: 1.35;
 }
 .certification-issuer {
-  font-size: 13px;
+  font-size: var(--text-supporting);
   margin-top: 8px;
 }
 .certification-description {
-  font-size: 13px;
+  font-size: var(--text-body);
   margin-top: 14px;
-  max-width: 460px;
+  max-width: 60ch;
 }
 .certification .text-link {
   margin-top: 15px;
@@ -1327,7 +1335,7 @@ html[data-mode="explore"] .hero h1 {
 
 .portfolio section > h2 {
   font-size: clamp(1.45rem, 4.65vw, 3rem);
-  letter-spacing: -0.045em;
+  letter-spacing: -0.035em;
 }
 .person-profile {
   display: flex;
