@@ -296,6 +296,10 @@ em {
   border-radius: 4px;
   transition: transform 0.3s;
 }
+html[data-mode="explore"] .project-image {
+  width: min(86%, 640px);
+  margin-inline: auto;
+}
 .project-card:hover img {
   transform: scale(1.025);
 }
