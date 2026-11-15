@@ -331,7 +331,7 @@ em {
   transition: transform 0.3s;
 }
 html[data-mode="explore"] .project-card {
-  width: min(70%, 560px);
+  width: min(85%, 760px);
   margin-inline: auto;
 }
 .project-card h3 {
