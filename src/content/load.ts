@@ -1,45 +1,59 @@
 import "server-only";
-import { cache } from "react";
-import { localContent } from "./local";
+import { sitePath } from "./path";
+import portfolio from "./portfolio.json";
 import type { Portfolio } from "./types";
-export const getContent = cache(async (): Promise<Portfolio> => {
-  const id = process.env.SANITY_PROJECT_ID;
-  if (!id) return localContent;
-  if (!/^[a-z0-9-]+$/.test(id)) throw new Error("Invalid SANITY_PROJECT_ID");
-  const dataset = process.env.SANITY_DATASET || "production";
-  if (!/^[a-z0-9_-]+$/.test(dataset)) throw new Error("Invalid dataset");
-  const query = `{"certifications":*[_type=="certification"]|order(order asc,issuedOn desc){"id":_id,title,issuer,issuedOn,description,credentialType,"url":coalesce(certificate.asset->url,credentialUrl)},"settings": *[_type == "settings"][0]{name,headline,intro,bio,email,location,education,educationEntries,"portrait":profilePicture{alt,"url":asset->url},"logo":logo.asset->url,"favicon":favicon.asset->url,socials[]{name,url,"logo":logo.asset->url},studioUrl,"resume":resume.asset->url}, "skills":*[_type=="skillGroup"]|order(order asc){category,items},"projects":*[_type=="project"]|order(order asc){"slug":slug.current,title,summary,body,technologies,"images":images[].asset->url,source,demo},"gallery":*[_type=="artwork"]|order(order asc){title,category,alt,description,"image":image.asset->url}}`;
-  const res = await fetch(
-    `https://${id}.api.sanity.io/v2025-02-19/data/query/${dataset}?perspective=published&query=${encodeURIComponent(query)}`,
-    {
-      headers: process.env.SANITY_READ_TOKEN
-        ? { Authorization: `Bearer ${process.env.SANITY_READ_TOKEN}` }
-        : {},
-    },
-  );
-  if (!res.ok) throw new Error(`Sanity build read failed: ${res.status}`);
-  const { result } = await res.json();
-  if (!result?.settings?.name || !result.settings.email)
-    throw new Error("Publish Sanity site settings before building.");
-  for (const p of result.projects)
-    if (!p.slug || !/^[a-z0-9-]+$/.test(p.slug) || !p.title)
-      throw new Error("Invalid project slug/title");
+
+type CertificateFile = Omit<
+  Portfolio["certifications"][number],
+  "id" | "url"
+> & {
+  url?: string;
+  externalUrl?: string;
+};
+const content: Omit<Portfolio, "certifications"> & {
+  certifications?: CertificateFile[];
+} = portfolio;
+
+export function getContent(): Portfolio {
+  const projects = (content.projects ?? []).map((project) => ({
+    ...project,
+    images: (project.images ?? []).map(sitePath),
+    technologies: project.technologies ?? [],
+  }));
+  const slugs = projects.map(({ slug }) => slug);
   if (
-    new Set(result.projects.map((p: { slug: string }) => p.slug)).size !==
-    result.projects.length
-  )
-    throw new Error("Duplicate project slugs");
+    slugs.some((slug) => !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) ||
+    new Set(slugs).size !== slugs.length
+  ) {
+    throw new Error(
+      "Each project needs a unique, lowercase, hyphen-separated slug.",
+    );
+  }
   return {
-    ...result.settings,
-    certifications: (result.certifications || []).filter(
-      (c: { url?: string }) => c.url && /^https?:\/\//.test(c.url),
-    ),
-    skills: result.skills,
-    projects: result.projects.map((p: Portfolio["projects"][number]) => ({
-      ...p,
-      images: p.images || [],
-      technologies: p.technologies || [],
+    ...content,
+    resume: content.resume && sitePath(content.resume),
+    logo: content.logo && sitePath(content.logo),
+    favicon: content.favicon && sitePath(content.favicon),
+    portrait: content.portrait?.url
+      ? { ...content.portrait, url: sitePath(content.portrait.url) }
+      : undefined,
+    socials: (content.socials ?? []).map((social) => ({
+      ...social,
+      logo: social.logo && sitePath(social.logo),
     })),
-    gallery: result.gallery,
+    skills: (content.skills ?? []).map((skill) => ({
+      ...skill,
+      items: skill.items ?? [],
+    })),
+    projects,
+    gallery: (content.gallery ?? [])
+      .filter((item) => item.image)
+      .map((item) => ({ ...item, image: sitePath(item.image) })),
+    certifications: (content.certifications ?? []).flatMap((entry, index) => {
+      const url = entry.url || entry.externalUrl;
+      if (typeof url !== "string" || !/^(https?:\/\/|\/(?!\/))/.test(url))
+        return [];
+      return [{ ...entry, id: String(index), url: sitePath(url) }];
+    }),
   };
-});
+}

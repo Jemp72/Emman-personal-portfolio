@@ -1,12 +1,9 @@
-import { getContent } from "@/content/load";
 import { sitePath } from "@/content/path";
 export const metadata = {
   title: "Manage portfolio — Emman",
   robots: { index: false, follow: false },
 };
-export default async function Admin() {
-  const c = await getContent();
-  const studio = c.studioUrl || process.env.NEXT_PUBLIC_SANITY_STUDIO_URL;
+export default function Admin() {
   return (
     <main className="detail" id="portfolio">
       <a href={sitePath("/")} className="text-link">
@@ -20,20 +17,19 @@ export default async function Admin() {
       </h1>
       <p className="intro">
         Manage your information, skills, projects, and creative outputs in the
-        portfolio editor. Sign in with the Sanity account connected to this
-        project.
+        portfolio editor. Sign in with GitHub and open
+        Jemp72/Emman-personal-portfolio.
       </p>
-      {studio && /^https:\/\//.test(studio) ? (
-        <a className="dark-button" href={studio} style={{ marginTop: 28 }}>
-          Open portfolio editor ↗
-        </a>
-      ) : (
-        <p>The editor is awaiting account configuration.</p>
-      )}
+      <a
+        className="dark-button"
+        href="https://app.pagescms.org/"
+        style={{ marginTop: 28 }}
+      >
+        Open Pages CMS ↗
+      </a>
       <p className="form-note">
-        Drafts stay in the editor. Publish or unpublish to update the public
-        site. GitHub checks for changes every 15 minutes; scheduled runs can be
-        delayed. For a faster update, run the deployment workflow below.
+        Saving an edit to main starts the GitHub Pages build. Check the
+        deployment status below before refreshing the site.
       </p>
       <a
         className="text-link"

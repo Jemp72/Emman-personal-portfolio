@@ -1,0 +1,208 @@
+{
+  "bio": "I’m a BS Information Technology student majoring in Information Security at the University of Southeastern Philippines. My work brings together web development, digital illustration, and graphic design. As a Public Information Officer for the Society of Information Technology Students’ local council, I create publication materials and help turn information into clear, considered visuals.",
+  "educationEntries": [
+    "BS Information Technology · Information Security · USeP · 2024–Present",
+    "STI College Tagum · Senior High School, ICT (Mobile App and Web Development) · 2022–2024 · With Honors",
+    "Tagum City National High School · Junior High School · 2018–2022 · Grade 10 With Honors"
+  ],
+  "email": "pedrosoemman72@gmail.com",
+  "headline": "A creative mind.\nA technical side.",
+  "intro": "Web development, graphic design, and a little curiosity. I’m Emman, an IT student bringing ideas to life through code and visual storytelling.",
+  "location": "Tagum City, Philippines",
+  "name": "Jose Emmanuel G. Pedroso",
+  "portrait": {
+    "alt": "Emman",
+    "url": "/cms-media/b4766ed39c42ad3d3720dcf6908c68872e3ba171-3472x3472.png"
+  },
+  "resume": "/cms-media/4b011d224c72caf9bb022f4f769af2913a214ac4.pdf",
+  "socials": [
+    {
+      "logo": "/cms-media/d0a9ea26a2f8ab17d79e3c30aa868c724f612ee5-720x720.webp",
+      "name": "GitHub",
+      "url": "https://github.com/Jemp72"
+    },
+    {
+      "logo": "/cms-media/957e5853686669638f5050f7b8d84fc967c9a1bd-512x512.png",
+      "name": "LinkedIn",
+      "url": "https://www.linkedin.com/in/emman-pedroso-93a23b2b0/"
+    }
+  ],
+  "skills": [
+    {
+      "category": "Development",
+      "items": [
+        "HTML & CSS",
+        "JavaScript",
+        "PHP & Laravel",
+        "ASP.NET",
+        "Tailwind CSS",
+        "Java",
+        "C# / .NET"
+      ]
+    },
+    {
+      "category": "Design & media",
+      "items": [
+        "Adobe Illustrator",
+        "Photoshop",
+        "Lightroom",
+        "Canva",
+        "DaVinci Resolve",
+        "Premiere Pro",
+        "CapCut"
+      ]
+    },
+    {
+      "category": "Beyond the screen",
+      "items": [
+        "Information Security coursework",
+        "Publication & layout",
+        "Document editing",
+        "English & Filipino"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "body": "The Domestic Abuse Reporting System lets residents submit reports while staff monitor cases, update investigation statuses, and record resolutions. Role-based access supports administrators and barangay operators. Real-time updates, incident mapping, geographic boundary validation, reporting dashboards, staff management, and audit logs support case management.",
+      "images": [
+        "/cms-media/a6c0250a34d46b304537a43eb6b05fc7c45c14fa-1600x900.webp",
+        "/cms-media/ded63d5079ad499857286b45525d21d18ae88a55-1600x900.webp",
+        "/cms-media/8904e77858c98b33fd5518b4e9d7185a8aa66c1e-1600x900.webp"
+      ],
+      "slug": "dars",
+      "source": "https://github.com/5kr1mp/dars",
+      "summary": "A clearer path to reporting and managing domestic abuse cases in Tagum City.",
+      "technologies": [
+        "Vue 3",
+        "TypeScript",
+        "Node.js",
+        "Express",
+        "MySQL",
+        "Socket.IO",
+        "Leaflet"
+      ],
+      "title": "DARS"
+    },
+    {
+      "body": "CLMS manages laboratory reservations, class schedules, instructor records, equipment inventory, maintenance status, office supplies, and laboratory utilization logs. It supports CSV enrollment imports, QR scanning, public reservation forms, and a student and guest time-in/time-out kiosk.",
+      "images": [
+        "/cms-media/a3d5278b877c94d9e7d28f8039bed0f680e02124-1600x900.webp",
+        "/cms-media/c23fb60e5feba69215099533cd5b1b4ed8808fe1-1600x900.webp",
+        "/cms-media/fb7b557c7c3c5f8d0178801b5d4e56c8b9481f98-1600x900.webp",
+        "/cms-media/6a2bf0dd62d13c627d28c3d7ba08f2b33acefd82-1600x900.webp"
+      ],
+      "slug": "clms",
+      "source": "https://github.com/Jemp72/CLMS-v1",
+      "summary": "One place for laboratory bookings, equipment, schedules, and daily usage.",
+      "technologies": [
+        "PHP",
+        "Laravel",
+        "QR scanning",
+        "Pest"
+      ],
+      "title": "Computer Laboratory Management"
+    },
+    {
+      "body": "A responsive café website showcasing the menu, services, and business information, with an easy way to explore offerings and get in touch. Built with HTML5, CSS3, and JavaScript and hosted on GitHub Pages.",
+      "images": [
+        "/cms-media/8080f06e1aa13bb853c7fba9caec40064e45022b-1600x900.webp",
+        "/cms-media/c96b7a126afa788caa7489ec2e255801a907a515-1600x900.webp",
+        "/cms-media/2ba367b5ca743f693713d2bfbbc4e4cef9a30e7a-1600x900.webp",
+        "/cms-media/9daef821dd2e6e5b3037867ff2f966ad1280c235-1600x900.webp"
+      ],
+      "slug": "cozzee",
+      "summary": "A warm, responsive home on the web for a café and its menu.",
+      "technologies": [
+        "HTML5",
+        "CSS3",
+        "JavaScript"
+      ],
+      "title": "Cozzee Cafe"
+    }
+  ],
+  "gallery": [
+    {
+      "alt": "ekko",
+      "category": "Illustration",
+      "image": "/cms-media/abc50ee3a67e5cd7d9aa24e444c7b20c3f9b4972-1080x1350.webp",
+      "title": "ekko"
+    },
+    {
+      "alt": "miles",
+      "category": "Illustration",
+      "image": "/cms-media/3233985ed29f81955442397d81b7619c0aa87184-1080x1350.webp",
+      "title": "miles"
+    },
+    {
+      "alt": "player222",
+      "category": "Illustration",
+      "image": "/cms-media/73521b1803a2e62cce104cf50e6bcc2a9ca1e85b-1080x1350.webp",
+      "title": "player222"
+    },
+    {
+      "alt": "wy",
+      "category": "Illustration",
+      "image": "/cms-media/a5d443e9a49fdec36a81e867d68131f4fed7dc2c-1080x1364.webp",
+      "title": "wy"
+    },
+    {
+      "alt": "Brochure1",
+      "category": "Graphic design",
+      "image": "/cms-media/7187209bb2da29e1fa06a5caf925b55a8ef67106-1600x1131.webp",
+      "title": "Brochure1"
+    },
+    {
+      "alt": "Brochure2",
+      "category": "Graphic design",
+      "image": "/cms-media/f954aed483ac04c7042e2c216b484ae4df3c6efb-1600x1131.webp",
+      "title": "Brochure2"
+    },
+    {
+      "alt": "DepartmentShirt Contest Winner",
+      "category": "Graphic design",
+      "image": "/cms-media/d66cd6fd8ce57c770b72b5deab4a0e3e4e7dd5dc-1350x1800.webp",
+      "title": "DepartmentShirt Contest Winner"
+    },
+    {
+      "alt": "Depshirt contest 1",
+      "category": "Graphic design",
+      "image": "/cms-media/1d16b61959c7a7aa2ef81e52cadbd04e5cea7618-1350x1800.webp",
+      "title": "Depshirt contest 1"
+    },
+    {
+      "alt": "dept orientation",
+      "category": "Graphic design",
+      "image": "/cms-media/00d5b5c946ad955862c4f78ad2c6a899eac930cd-1600x2133.webp",
+      "title": "dept orientation"
+    },
+    {
+      "alt": "dept orientation back",
+      "category": "Graphic design",
+      "image": "/cms-media/ca3d8072cf70f8a0ee406a8c0761c8d3cf7095c9-1600x2133.webp",
+      "title": "dept orientation back"
+    },
+    {
+      "alt": "Pose & Play poster",
+      "category": "Graphic design",
+      "image": "/cms-media/104f344ce650fbc41c8c1d24d639933125811518-1414x2000.webp",
+      "title": "Pose & Play poster"
+    },
+    {
+      "alt": "SITS shirt dark",
+      "category": "Graphic design",
+      "image": "/cms-media/1f86c1b2d4005bb22950fac7cfc56b9415f1668d-1600x1067.webp",
+      "title": "SITS shirt dark"
+    }
+  ],
+  "certifications": [
+    {
+      "credentialType": "Participation & attendance",
+      "description": "Conference held at Davao del Norte State College, Panabo City. Includes certificates of participation and attendance.",
+      "issuedOn": "2026-10-14",
+      "issuer": "PSITE Davao Region · CHED XI",
+      "title": "Mindanao Conference of IT Students (MCITS) 2026",
+      "url": "/cms-media/ec3c0d7ed3352958ec7f3cc83cf746d96bc4bdc0.pdf"
+    }
+  ]
+}

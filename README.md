@@ -12,24 +12,7 @@ See `VERIFICATION.md` for the completed checks and their limits. With the previe
 
 ## Content
 
-Without a Sanity project ID, the app uses the owner's supplied content in `src/content/local.ts`, not fabricated samples. CV-derived biography and skills and project descriptions have been transcribed there. AGAP screenshots belong to DARS, as confirmed by the owner. Artwork titles currently follow supplied filenames and can be refined in the CMS. No portrait or unprovided demo links are invented.
-
-The provided PDF is downloadable at `/resume.pdf` and contains the owner's contact details. Review this and screenshot contents before public deployment. Source files are outside `public` and not included in the static export.
-
-## Sanity setup (account configuration required)
-
-1. Create a Sanity project and production dataset in your account.
-2. In `studio`, copy `.env.example` to `.env.local`, set your project ID, run `npm install`, and `npm run dev`. Sign in with Sanity. Invite only intended editors through Sanity project permissions.
-3. Create one Site settings document, skill groups, projects, and artwork. Use the local content and supplied files as the source. Upload images and resume. Set numerical order fields to control ordering. Publish each document. This initial entry/upload step is manual.
-4. Copy the root `.env.example` to `.env.local` and set `SANITY_PROJECT_ID` and dataset. For a private dataset use a read-only `SANITY_READ_TOKEN`. Never prefix the token with `NEXT_PUBLIC_` or use a write token.
-5. Run the production build. A configured CMS failure or missing settings fails the build. It never silently replaces CMS content with the local copy.
-6. Run `npm run deploy` inside `studio` to publish the independently hosted editor. Sanity handles authentication. The portfolio only reads published content at build time.
-
-## Static deployment and publishing
-
-Set `SITE_URL` to your actual public origin (for example, your custom domain) for social metadata. Connect this repository to Vercel. Use `npm run build`, output directory `out`, and the root Sanity environment variables. The exported site uses trailing-slash routes, including `/projects/dars/`; the static host must serve directory `index.html` files. The current configuration assumes deployment at the domain root.
-
-Create a Vercel deploy hook under project Settings → Git. Add its private URL as a Sanity webhook (POST), triggered by create/update/delete of published settings, skillGroup, project, or artwork documents. Exclude draft documents with `!(_id in path("drafts.**"))`. Never put the deploy hook URL in browser code. Publish a harmless content edit and verify a successful deployment before relying on the flow. New project URLs require a rebuild. Existing deployment remains available if a build fails.
+Pages CMS edits `src/content/portfolio.json` and stores uploads under `public/cms-media`. The GitHub Pages workflow rebuilds the static site after edits are saved to main. See [Content editing](CONTENT_EDITING.md) for setup and publishing. The existing Sanity project is retained as an archive.
 
 ## Interaction and implementation
 
@@ -38,10 +21,6 @@ Simple mode and no-JavaScript output use semantic HTML. Preference is remembered
 Arrow keys/WASD or on-screen buttons move the frog. Escape pauses. Hidden tabs pause the game. Exit restores the previous scroll position. The scene is disposed when Simple mode is selected. Gameplay logic is independently tested under `tests`.
 
 Mobile Explore keeps a compact scene above the content to preserve reading space; Play opens it full-screen. Artwork opens the original optimized image in a new tab. No multiplayer, analytics, or shared leaderboard is included.
-
-## Remaining release work
-
-Connect and populate Sanity, configure hosting and the deploy webhook, review personal content and public screenshots, and measure performance on real mobile hardware. No account connections or public deployment are implied by the local implementation.
 
 ## Explore and night mode
 
@@ -61,11 +40,7 @@ Each Play run gets a new random seed. Lanes use deterministic values derived fro
 
 ## GitHub Pages
 
-The Pages workflow builds on pushes to main and publishes out/. In repository Settings > Pages, select GitHub Actions. Expected URL: https://Jemp72.github.io/Emman-personal-portfolio/ . The workflow sets NEXT_PUBLIC_BASE_PATH=/Emman-personal-portfolio; omit this for local development or root-domain hosting. Configure Sanity project/dataset as repository variables and its read token as a secret when connecting the CMS. CMS changes require a new workflow run.
-
-## Connected content editing
-
-The live site now uses the Emman Portfolio Sanity project. See CONTENT_EDITING.md for sign-in, editing, ordering, uploads, and publishing. On the homepage outside Play, enter the Konami code (up, up, down, down, left, right, left, right, B, A) to open the admin entry page. Published changes are checked every 15 minutes, with unchanged runs skipped; manual workflow runs are available for faster publishing. GitHub schedules may be delayed. The separate Studio is hosted at https://emman-portfolio-8cs195in.sanity.studio/ .
+The workflow builds on pushes to main and publishes `out/` through GitHub Actions. It sets the repository base path and public site origin in the build environment.
 
 ## Typography
 
@@ -74,4 +49,4 @@ Space Grotesk is the primary typeface for body text, navigation, and the technic
 
 ## Certifications
 
-Certifications are managed in Sanity's Certification document type. The public section presents text metadata and an external file link. Local development without a configured CMS links to the MCITS PDF hosted in Sanity. The certificate file is not committed to the public GitHub repository. The original supplied PDF is preserved. The optional one-time studio/add-mcits-certificate.ts import preserves an existing record and its edits.
+Add certificate details and upload a PDF or image in Pages CMS, or provide an external credential URL. The public site displays the details and a link to view the certificate.
