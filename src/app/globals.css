@@ -1198,10 +1198,10 @@ html[data-mode="explore"] .hero h1 {
     display: none;
   }
 }
-/* Desktop Explore reserves 60% for content and 40% for the woodland. */
+/* Desktop Explore reserves 80% for content and 20% for the woodland. */
 @media (min-width: 641px) {
   html[data-mode="explore"] .portfolio {
-    width: 50%;
+    width: 70%;
     max-width: none;
     margin-left: 5%;
     margin-right: 0;
@@ -1216,16 +1216,16 @@ html[data-mode="explore"] .hero h1 {
     background:
       linear-gradient(
         90deg,
-        color-mix(in srgb, var(--paper) 92%, transparent) 0% 48%,
-        color-mix(in srgb, var(--paper) 90%, transparent) 54%,
-        color-mix(in srgb, var(--paper) 68%, transparent) 61%,
-        color-mix(in srgb, var(--paper) 28%, transparent) 70%,
-        transparent 79%
+        color-mix(in srgb, var(--paper) 92%, transparent) 0% 68%,
+        color-mix(in srgb, var(--paper) 90%, transparent) 74%,
+        color-mix(in srgb, var(--paper) 68%, transparent) 81%,
+        color-mix(in srgb, var(--paper) 28%, transparent) 89%,
+        transparent 97%
       ),
       linear-gradient(0deg, var(--paper), transparent 17%);
   }
   .world:not(.world-playing) .world-caption {
-    left: 63%;
+    left: 82%;
     right: 3%;
     flex-direction: column;
     align-items: flex-start;
@@ -1233,10 +1233,10 @@ html[data-mode="explore"] .hero h1 {
   }
   .world:not(.world-playing) .world-label {
     right: 3%;
-    max-width: 34%;
+    max-width: 16%;
   }
   .world:not(.world-playing) .scene-message {
-    left: 60%;
+    left: 80%;
   }
 }
 
@@ -1337,4 +1337,61 @@ html[data-mode="explore"] .hero h1 {
   .world-atmosphere {
     display: none;
   }
+}
+
+.portfolio section > h2 {
+  font-size: clamp(1.45rem, 4.65vw, 3rem);
+  letter-spacing: -0.045em;
+}
+.person-profile {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(12px, 3vw, 28px);
+}
+.person-profile p {
+  max-width: 64ch;
+}
+.profile-picture {
+  width: clamp(64px, 15vw, 144px);
+  aspect-ratio: 1;
+  height: auto;
+  flex: none;
+  border-radius: 16%;
+  object-fit: cover;
+}
+.profile-placeholder {
+  display: grid;
+  place-items: center;
+  background: var(--surface);
+  color: var(--ink);
+  font:
+    italic 2rem var(--font-lora),
+    Georgia,
+    serif;
+}
+.about-note ul {
+  list-style: disc;
+  padding-inline-start: 1.25rem;
+  margin-block: 0;
+}
+.brand-logo {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+.social-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.social-list a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 15px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.social-list img {
+  object-fit: contain;
 }

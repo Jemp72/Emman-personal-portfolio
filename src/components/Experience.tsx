@@ -6,7 +6,7 @@ import { createKonamiMatcher } from "@/three/konami";
 import ThemeToggle from "./ThemeToggle";
 import type { SceneController } from "@/three/scene";
 import { newGame, scrollDestination, type Game } from "@/three/game";
-export default function Experience() {
+export default function Experience({ logo }: { logo?: string }) {
   const [mode, setMode] = useState<"simple" | "explore">("simple"),
     [playing, setPlaying] = useState(false),
     [ready, setReady] = useState(false),
@@ -224,21 +224,37 @@ export default function Experience() {
     <>
       <header className="site-header" inert={playing}>
         <a className="brand" href={sitePath("/#home")} aria-label="Emman home">
-          <span className="frog-mark">••</span> Emman
+          {logo ? (
+            <img
+              className="brand-logo"
+              src={logo}
+              alt=""
+              width={30}
+              height={30}
+            />
+          ) : (
+            <span className="frog-mark">••</span>
+          )}{" "}
+          Emman
           <span className="brand-dot">.</span>
         </a>
         <nav aria-label="Main navigation">
-          {["about", "skills", "projects", "certifications", "contact"].map(
-            (id) => (
-              <a
-                key={id}
-                href={sitePath(id === "contact" ? "/contact/" : `/#${id}`)}
-                aria-current={active === id ? "location" : undefined}
-              >
-                {id}
-              </a>
-            ),
-          )}
+          {[
+            "about",
+            "skills",
+            "projects",
+            "certifications",
+            "socials",
+            "contact",
+          ].map((id) => (
+            <a
+              key={id}
+              href={sitePath(id === "contact" ? "/contact/" : `/#${id}`)}
+              aria-current={active === id ? "location" : undefined}
+            >
+              {id}
+            </a>
+          ))}
         </nav>
         <div className="mode-switch" aria-label="Presentation mode">
           <button

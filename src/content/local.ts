@@ -28,6 +28,11 @@ export const localContent: Portfolio = {
   location: "Tagum City, Philippines",
   resume: sitePath("/resume.pdf"),
   education: "BS Information Technology · Information Security · USeP",
+  educationEntries: [
+    "University of Southeastern Philippines (USeP) · BS Information Technology, major in Information Security · 2024–Present",
+    "STI College Tagum · Senior High School, ICT (Mobile App and Web Development) · 2022–2024 · With Honors",
+    "Tagum City National High School · Junior High School · 2018–2022 · Grade 10 With Honors",
+  ],
   skills: [
     {
       category: "Development",

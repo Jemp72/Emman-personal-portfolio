@@ -3,9 +3,15 @@ import { getContent } from "@/content/load";
 import Experience from "@/components/Experience";
 export default async function Home() {
   const c = await getContent();
+  const education = c.educationEntries ?? (c.education ? [c.education] : []);
+  const socials = (
+    c.socials ?? [
+      { name: "GitHub", url: "https://github.com/Jemp72", logo: undefined },
+    ]
+  ).filter((s) => /^https?:\/\//i.test(s.url));
   return (
     <>
-      <Experience />
+      <Experience logo={c.logo} />
       <main id="portfolio" className="portfolio">
         <section id="home" className="hero">
           <div className="eyebrow">
@@ -47,15 +53,37 @@ export default async function Home() {
             <span>Code meets creativity</span>
           </div>
           <h2>
-            Curious by nature.
-            <br />
-            <em>Creative by practice.</em>
+            Let me introduce <em>myself</em>
           </h2>
-          <p>{c.bio}</p>
-          {c.education && (
+          <div className="person-profile">
+            {c.portrait?.url ? (
+              <img
+                className="profile-picture"
+                src={c.portrait.url}
+                alt={c.portrait.alt || c.name}
+                width={144}
+                height={144}
+              />
+            ) : (
+              <span
+                className="profile-picture profile-placeholder"
+                aria-hidden="true"
+              >
+                {c.name.trim().slice(0, 1)}
+              </span>
+            )}
+            <p>{c.bio}</p>
+          </div>
+          {education.length > 0 && (
             <div className="about-note">
               <span>Education</span>
-              <strong>{c.education}</strong>
+              <ul>
+                {education.map((entry, i) => (
+                  <li key={i}>
+                    <strong>{entry}</strong>
+                  </li>
+                ))}
+              </ul>
             </div>
           )}
           {c.resume && (
@@ -74,11 +102,7 @@ export default async function Home() {
             <span className="eyebrow">02 / THE TOOLKIT</span>
             <span>Always learning</span>
           </div>
-          <h2>
-            Different tools.
-            <br />
-            <em>One curious mind.</em>
-          </h2>
+          <h2>Here&apos;s what I can do</h2>
           <div className="skill-groups">
             {c.skills.map((s, i) => (
               <div key={s.category}>
@@ -100,11 +124,7 @@ export default async function Home() {
             <span className="eyebrow">03 / SELECTED WORK</span>
             <span>Ideas, made real</span>
           </div>
-          <h2>
-            A few things
-            <br />
-            <em>I’ve worked on.</em>
-          </h2>
+          <h2>Selected projects</h2>
           <div className="projects">
             {c.projects.map((p, i) => (
               <a
@@ -140,11 +160,7 @@ export default async function Home() {
             <span className="eyebrow">04 / CERTIFICATIONS</span>
             <span>Along the learning path</span>
           </div>
-          <h2>
-            Small steps.
-            <br />
-            <em>Lasting lessons.</em>
-          </h2>
+          <h2>Certifications</h2>
           <p>
             Certificates from conferences, learning experiences, and
             professional milestones.
@@ -200,11 +216,7 @@ export default async function Home() {
             <span className="eyebrow">05 / CREATIVE CORNER</span>
             <span>Beyond the code</span>
           </div>
-          <h2>
-            Made with
-            <br />
-            <em>a different brush.</em>
-          </h2>
+          <h2>Creative work</h2>
           <p>
             Digital illustrations, publication materials, and graphic
             explorations.
@@ -233,13 +245,25 @@ export default async function Home() {
             ))}
           </div>
         </section>
+        <section id="socials">
+          <h2>
+            My <em>Socials</em>
+          </h2>
+          <ul className="social-list">
+            {socials.map((s) => (
+              <li key={s.url}>
+                <a href={s.url} target="_blank" rel="noreferrer">
+                  {s.logo && <img src={s.logo} alt="" width={28} height={28} />}
+                  <span>{s.name}</span>
+                  <span aria-hidden="true">↗</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
         <section id="contact" className="contact">
           <span className="eyebrow">06 / THE NEXT CHAPTER</span>
-          <h2>
-            Have something
-            <br />
-            <em>in mind?</em>
-          </h2>
+          <h2>Have something in mind?</h2>
           <p>
             I’d love to hear about it. Let’s bring a little creativity to your
             next idea.

@@ -100,7 +100,52 @@ export default defineConfig({
           }),
           text("location", true),
           text("studioUrl"),
-          text("education"),
+          { ...text("education"), hidden: true },
+          defineField({
+            name: "educationEntries",
+            title: "Education",
+            type: "array",
+            of: [{ type: "string" }],
+            description:
+              "List each program or school separately. Existing education appears until you add a list.",
+          }),
+          defineField({
+            name: "profilePicture",
+            title: "Profile picture",
+            type: "image",
+            options: { hotspot: true },
+            fields: [{ name: "alt", type: "string", title: "Alt text" }],
+          }),
+          defineField({ name: "logo", title: "Site logo", type: "image" }),
+          defineField({
+            name: "favicon",
+            title: "Favicon",
+            type: "image",
+            description: "Use a square PNG for best compatibility.",
+          }),
+          defineField({
+            name: "socials",
+            title: "Social links",
+            type: "array",
+            of: [
+              {
+                type: "object",
+                fields: [
+                  text("name", true),
+                  {
+                    ...url("url"),
+                    validation: (r) =>
+                      r.required().uri({ scheme: ["http", "https"] }),
+                  },
+                  defineField({
+                    name: "logo",
+                    title: "Social media logo",
+                    type: "image",
+                  }),
+                ],
+              },
+            ],
+          }),
           defineField({
             name: "resume",
             type: "file",

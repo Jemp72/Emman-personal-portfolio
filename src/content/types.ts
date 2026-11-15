@@ -26,6 +26,11 @@ export type Portfolio = {
   location: string;
   resume?: string;
   education?: string;
+  educationEntries?: string[];
+  portrait?: { url: string; alt?: string };
+  logo?: string;
+  favicon?: string;
+  socials?: { name: string; url: string; logo?: string }[];
   studioUrl?: string;
   skills: { category: string; items: string[] }[];
   projects: Project[];

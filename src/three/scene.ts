@@ -229,9 +229,9 @@ export function createScene(
       h = host.clientHeight;
     renderer.setSize(w, h);
     const desktopExplore = !playing && matchMedia("(min-width: 641px)").matches;
-    const view = (desktopExplore ? w * 0.4 : w) < 500 ? 7 : 8;
+    const view = (desktopExplore ? w * 0.2 : w) < 500 ? 7 : 8;
     const halfWidth = (view * w) / h;
-    const offset = desktopExplore ? halfWidth * 0.6 : 0;
+    const offset = desktopExplore ? halfWidth * 0.8 : 0;
     camera.left = -halfWidth - offset;
     camera.right = halfWidth - offset;
     camera.top = view;

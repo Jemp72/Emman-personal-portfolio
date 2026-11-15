@@ -1,3 +1,4 @@
+import { getContent } from "@/content/load";
 import { sitePath } from "@/content/path";
 import type { Metadata } from "next";
 import "./globals.css";
@@ -20,7 +21,7 @@ const robotoMono = Roboto_Mono({
   display: "swap",
   variable: "--font-roboto-mono",
 });
-export const metadata: Metadata = {
+const metadata: Metadata = {
   metadataBase: new URL(process.env.SITE_URL || "http://localhost:3000"),
   icons: { icon: sitePath("/icon.svg") },
   title: "Emman Pedroso — Code, design & curiosity",
@@ -32,6 +33,11 @@ export const metadata: Metadata = {
     images: [sitePath("/social.png")],
   },
 };
+export async function generateMetadata(): Promise<Metadata> {
+  const { favicon } = await getContent();
+  return { ...metadata, icons: { icon: favicon || sitePath("/icon.svg") } };
+}
+
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html
