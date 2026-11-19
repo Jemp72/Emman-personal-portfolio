@@ -1,5 +1,7 @@
 # Emman's woodland portfolio
 
+For the complete owner/developer guide, see [Portfolio Maintenance Handbook](PORTFOLIO_HANDBOOK.md). It covers content editing, setup, code structure, fonts, layout, gameplay, dependencies, verification, publishing, and recovery.
+
 Static Next.js portfolio with direct Three.js. Explore, Play, and Simple share the same content. The source material lives in `content-source`; optimized public copies live in `public/media`.
 
 ## Local development
